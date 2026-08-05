@@ -3,18 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OderOptimization - Оптимизация систем</title>
+    <title>ianchikexe - Оптимизация систем</title>
+    <!-- Подключение жирного современного шрифта Inter -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Inter:wght@700;800;900&display=swap" rel="stylesheet">
+    
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Inter', sans-serif;
         }
 
         body {
-            /* Градиент поверх гифки, чтобы текст оставался читаемым */
-            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('./background.gif') no-repeat center center fixed;
+            background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('./background.gif') no-repeat center center fixed;
             background-size: cover;
             color: #ffffff;
             min-height: 100vh;
@@ -33,17 +37,20 @@
         }
 
         .logo {
-            font-size: 20px;
-            font-weight: bold;
-            letter-spacing: 1px;
+            font-size: 22px;
+            font-weight: 900;
+            letter-spacing: -0.5px;
         }
 
         .nav-links a {
-            color: #aaa;
+            color: #b3b3b3;
             text-decoration: none;
-            margin-left: 24px;
+            margin-left: 30px;
             font-size: 14px;
-            transition: color 0.3s ease;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.2s ease;
         }
 
         .nav-links a:hover {
@@ -62,78 +69,88 @@
         }
 
         .headline {
-            font-size: 34px;
+            font-size: 42px;
             margin-bottom: 60px;
-            font-weight: 700;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
-            line-height: 1.3;
+            font-weight: 900;
+            letter-spacing: -1px;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+            line-height: 1.2;
         }
 
+        /* Сетка под 3 оставшиеся карточки */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
             margin-bottom: 60px;
         }
 
+        /* Эффект матового стекла (Glassmorphism) */
         .card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-            padding: 35px 25px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 40px 30px;
             text-align: left;
-            transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(255, 255, 255, 0.25);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
+            transform: translateY(-8px);
+            border-color: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(255, 255, 255, 0.05);
         }
 
         .card-title {
             font-size: 13px;
-            color: #777;
-            margin-bottom: 15px;
+            color: #8c8c8c;
+            margin-bottom: 20px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
+            font-weight: 800;
         }
 
         .card-price {
-            font-size: 38px;
-            font-weight: bold;
-            letter-spacing: -1px;
+            font-size: 46px;
+            font-weight: 900;
+            letter-spacing: -1.5px;
         }
 
+        /* Кнопка Купить с жирным текстом и неоновым эффектом */
         .btn-enter {
             display: inline-block;
             align-self: center;
-            padding: 16px 50px;
-            font-size: 18px;
-            font-weight: 600;
+            padding: 18px 65px;
+            font-size: 20px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             color: #000;
             background: #fff;
-            border: 1px solid #fff;
-            border-radius: 8px;
+            border: 2px solid #fff;
+            border-radius: 10px;
             text-decoration: none;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+            transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
         }
 
         .btn-enter:hover {
-            transform: scale(1.03);
+            transform: scale(1.04);
             background: transparent;
             color: #fff;
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.6);
-            border-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 35px rgba(255, 255, 255, 0.7);
+            border-color: rgba(255, 255, 255, 0.9);
         }
 
         @media (max-width: 768px) {
-            .headline { font-size: 24px; margin-bottom: 40px; }
-            .card-price { font-size: 32px; }
+            .headline { font-size: 28px; margin-bottom: 40px; }
+            .card-price { font-size: 36px; }
             header { flex-direction: column; gap: 20px; text-align: center; padding: 20px; }
-            .nav-links a { margin: 0 12px; }
+            .nav-links a { margin: 0 15px; }
             .services-grid { margin-bottom: 40px; }
         }
     </style>
@@ -141,7 +158,7 @@
 <body>
 
     <header>
-        <div class="logo">@OderOptimization</div>
+        <div class="logo">ianchikexe</div>
         <div class="nav-links">
             <a href="https://t.me" target="_blank" rel="noopener noreferrer">Reviews</a>
             <a href="https://t.me" target="_blank" rel="noopener noreferrer">Channel</a>
@@ -150,7 +167,7 @@
     </header>
 
     <div class="container">
-        <h1 class="headline">@OderOptimization. Твоя система не думает - она действует</h1>
+        <h1 class="headline">ianchikexe. Твоя система не думает - она действует</h1>
 
         <div class="services-grid">
             <div class="card">
@@ -167,14 +184,9 @@
                 <div class="card-title">Virus Removal ▼</div>
                 <div class="card-price">999₽</div>
             </div>
-
-            <div class="card">
-                <div class="card-title">Configuring Emulator ▼</div>
-                <div class="card-price">999₽</div>
-            </div>
         </div>
 
-        <a href="https://t.me" target="_blank" rel="noopener noreferrer" class="btn-enter">Войти для покупки</a>
+        <a href="https://t.me" target="_blank" rel="noopener noreferrer" class="btn-enter">Купить</a>
     </div>
 
 </body>
