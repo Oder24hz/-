@@ -7,7 +7,7 @@
     
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Space+Grotesk:wght@700;900&family=Unbounded:wght@700;900&display=swap" rel="stylesheet">
+    <link href="https://googleapis.com/css2?family=Inter:wght@700;900&display=swap" rel="stylesheet">
     
     <style>
         * {
@@ -17,27 +17,18 @@
             user-select: none;
         }
 
-        :root {
-            --bg-color: #050508;
-            --card-bg: rgba(10, 10, 15, 0.7);
-            --text-main: #ffffff;
-            --text-muted: #64748b;
-        }
-
         body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            font-family: 'Space Grotesk', sans-serif;
+            background-color: #050508;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            overflow-y: auto;
-            overflow-x: hidden;
+            overflow: hidden;
             position: relative;
         }
 
-        /* Путь изменен на локальный файл в твоем репозитории */
         .bg-gif {
             position: fixed;
             top: 0;
@@ -54,86 +45,84 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(180deg, rgba(5, 5, 8, 0.85) 0%, rgba(5, 5, 8, 0.95) 100%);
+            background: linear-gradient(180deg, rgba(5, 5, 8, 0.8) 0%, rgba(5, 5, 8, 0.85) 100%);
             z-index: -1;
         }
 
         header {
             width: 100%;
-            max-width: 1400px;
+            max-width: 1200px;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 25px 20px;
             z-index: 10;
         }
 
         .nav-links {
             display: flex;
-            gap: clamp(20px, 4vw, 50px);
+            gap: 40px;
         }
 
         .nav-links a {
-            color: var(--text-muted);
+            color: #64748b;
             text-decoration: none;
-            font-size: clamp(12px, 1.2vw, 15px);
+            font-size: 13px;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: color 0.3s ease;
+            letter-spacing: 1.5px;
+            transition: color 0.2s ease;
         }
 
         .nav-links a:hover {
-            color: var(--text-main);
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            color: #ffffff;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1100px;
             width: 100%;
-            padding: 0 clamp(20px, 4vw, 60px) 30px;
+            padding: 0 40px 30px;
             text-align: center;
+            flex-grow: 1;
             display: flex;
             flex-direction: column;
+            justify-content: center;
             align-items: center;
             z-index: 2;
         }
 
         .headline {
-            font-family: 'Unbounded', sans-serif;
-            font-size: clamp(18px, 2.5vw, 36px);
+            font-size: 26px;
             font-weight: 900;
-            line-height: 1.3;
-            letter-spacing: -1px;
-            margin-top: 10px;
-            margin-bottom: clamp(25px, 4vw, 50px);
-            max-width: 1000px;
-            text-shadow: 0 0 40px rgba(255, 255, 255, 0.15);
+            line-height: 1.4;
+            margin-bottom: 40px;
+            max-width: 900px;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
         }
 
         .services-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: clamp(15px, 2.5vw, 30px);
+            gap: 25px;
             width: 100%;
-            margin-bottom: clamp(30px, 4vw, 50px);
+            margin-bottom: 45px;
         }
 
         .card-wrapper {
             position: relative;
             background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.01));
-            border-radius: 20px;
+            border-radius: 16px;
             padding: 1px;
             overflow: hidden;
-            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transition: transform 0.3s ease;
         }
 
         .card {
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 19px;
-            padding: clamp(25px, 3vw, 40px) clamp(20px, 2vw, 25px);
+            background: rgba(10, 10, 15, 0.75);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 15px;
+            padding: 35px 25px;
             text-align: left;
             height: 100%;
             display: flex;
@@ -146,19 +135,18 @@
             position: absolute;
             inset: 0;
             background: rgba(10, 10, 15, 0.95);
-            backdrop-filter: blur(15px);
-            border-radius: 19px;
+            border-radius: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 25px;
+            padding: 20px;
             text-align: center;
-            font-size: clamp(13px, 1.3vw, 17px);
+            font-size: 14px;
             font-weight: 700;
             color: #ffffff;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.2s ease;
             z-index: 5;
         }
 
@@ -173,9 +161,8 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: conic-gradient(transparent, transparent, transparent, rgba(255, 255, 255, 0.4), transparent);
+            background: conic-gradient(transparent, transparent, transparent, rgba(255, 255, 255, 0.3), transparent);
             transform: rotate(0deg);
-            transition: transform 0.5s linear;
             z-index: 0;
             opacity: 0;
             pointer-events: none;
@@ -192,72 +179,62 @@
 
         .card-wrapper:hover::before {
             opacity: 1;
-            animation: rotateGlow 3s linear infinite;
+            animation: rotateGlow 2.5s linear infinite;
         }
 
         .card-title {
-            font-size: clamp(10px, 0.9vw, 12px);
-            color: var(--text-muted);
+            font-size: 11px;
+            color: #64748b;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             font-weight: 700;
             margin-bottom: 15px;
-            z-index: 1;
         }
 
         .card-price {
-            font-family: 'Unbounded', sans-serif;
-            font-size: clamp(24px, 2.5vw, 36px);
+            font-size: 32px;
             font-weight: 900;
-            letter-spacing: -1px;
-            z-index: 1;
+            letter-spacing: -0.5px;
         }
 
         .btn-buy {
             display: block;
             width: 100%;
-            max-width: clamp(240px, 25vw, 360px);
+            max-width: 320px;
             padding: 16px 0;
-            font-family: 'Unbounded', sans-serif;
-            font-size: clamp(14px, 1.2vw, 16px);
+            font-size: 16px;
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 1px;
             color: #ffffff;
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            border-radius: 14px;
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
             text-decoration: none;
             cursor: pointer;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
         }
 
         .btn-buy:hover {
-            transform: scale(1.04);
-            background: rgba(255, 255, 255, 1);
+            transform: scale(1.03);
+            background: #ffffff;
             color: #000000;
             border-color: #ffffff;
-            box-shadow: 0 0 40px rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
         }
 
-        @media (max-width: 900px) {
-            .services-grid {
-                grid-template-columns: 1fr;
-                max-width: 450px;
-            }
-            .card-wrapper::before {
-                opacity: 1;
-                background: linear-gradient(135deg, rgba(255,255,255,0.3), transparent);
-            }
+        @media (max-width: 800px) {
+            body { overflow-y: auto; }
+            .services-grid { grid-template-columns: 1fr; max-width: 400px; }
+            .headline { font-size: 20px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Путь заменен на локальный файл -->
     <img class="bg-gif" src="./background.gif" alt="background">
     <div class="bg-overlay"></div>
 
