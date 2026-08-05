@@ -6,15 +6,15 @@
     <title>ianchikexe — Оптимизация</title>
     
     <!-- Подключение ультра-жирного шрифта -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://googleapis.com" rel="stylesheet">
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Unbounded:wght@800;900&display=swap" rel="stylesheet">
     
     <style>
-        /* Базовые настройки и переменные из твоего старого сайта */
+        /* Переменные из твоего старого сайта */
         :root {
-            --bg-gif: url('https://i.pinimg.com/originals/31/f0/cb/31f0cbbfe52091e54b2f8157ebd60a8f.gif');
-            --card-bg: rgba(10, 10, 15, 0.7);
+            --bg-gif: url('https://pinimg.com');
+            --card-bg: rgba(10, 10, 15, 0.45); /* Уменьшена непрозрачность для максимальной прозрачности */
             --text-main: #FFFFFF;
             --text-muted: #64748b;
         }
@@ -26,9 +26,8 @@
             user-select: none;
         }
 
-        /* Задний фон один в один по твоей технологии */
         body {
-            background: linear-gradient(180deg, rgba(5, 5, 8, 0.75) 0%, rgba(5, 5, 8, 0.85) 100%), 
+            background: linear-gradient(180deg, rgba(5, 5, 8, 0.7) 0%, rgba(5, 5, 8, 0.8) 100%), 
                         var(--bg-gif) no-repeat center center fixed;
             background-size: cover;
             color: var(--text-main);
@@ -41,14 +40,14 @@
             overflow-x: hidden;
         }
 
-        /* Кнопки навигации строго по центру */
+        /* Кнопки навигации — остаются строго сверху */
         header {
             width: 100%;
             max-width: 1400px;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 40px 20px;
+            padding: 40px 20px 0px;
             z-index: 10;
         }
 
@@ -64,7 +63,7 @@
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 2px;
-            transition: color 0.3s ease;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
         }
 
         .nav-links a:hover {
@@ -72,53 +71,60 @@
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
 
-        /* Крупный объемный контейнер */
+        /* Общий контейнер смещен сильно ниже */
         .container {
             max-width: 1300px;
             width: 100%;
-            padding: 20px 40px 80px;
+            padding: 0px 40px 80px;
             text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
             flex-grow: 1;
             z-index: 2;
+            margin-top: 110px; /* Жесткий сдвиг всего контента вниз */
         }
 
-        /* Огромная жирная цитата */
+        /* Анимированная жирная цитата */
         .headline {
             font-size: 42px;
             font-weight: 900;
             line-height: 1.4;
             letter-spacing: -1px;
-            margin-bottom: 60px;
+            margin-bottom: 70px;
             max-width: 1100px;
-            text-shadow: 0 0 40px rgba(255, 255, 255, 0.15);
+            animation: glowPulse 3s infinite ease-in-out;
         }
 
-        /* Мощная трехколоночная сетка */
+        @keyframes glowPulse {
+            0% { text-shadow: 0 0 20px rgba(255, 255, 255, 0.1); }
+            50% { text-shadow: 0 0 40px rgba(255, 255, 255, 0.3); }
+            100% { text-shadow: 0 0 20px rgba(255, 255, 255, 0.1); }
+        }
+
         .services-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 40px;
             width: 100%;
-            margin-bottom: 60px;
+            margin-bottom: 70px;
         }
 
-        /* Эффект стекла */
+        /* Обёртка с эффектом прозрачного стекла */
         .card-wrapper {
             position: relative;
-            background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.01));
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02));
             border-radius: 24px;
             padding: 1px;
             overflow: hidden;
             transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
+        /* Полностью прозрачные матовые блоки */
         .card {
             background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(25px); /* Мощный blur, сквозь который виден задник */
+            -webkit-backdrop-filter: blur(25px);
             border-radius: 23px;
             padding: 60px 40px;
             text-align: left;
@@ -129,11 +135,10 @@
             position: relative;
         }
 
-        /* Подсказка при наведении на Custom Bluestacks */
         .card-hint {
             position: absolute;
             inset: 0;
-            background: rgba(10, 10, 15, 0.95);
+            background: rgba(5, 5, 8, 0.95);
             backdrop-filter: blur(15px);
             border-radius: 23px;
             display: flex;
@@ -154,7 +159,7 @@
             opacity: 1;
         }
 
-        /* Анимация вращения неоновых краев при наведении */
+        /* Вращающийся неоновый контур */
         .card-wrapper::before {
             content: '';
             position: absolute;
@@ -177,11 +182,12 @@
 
         .card-wrapper:hover {
             transform: translateY(-12px);
+            background: linear-gradient(135deg, rgba(255,255,255,0.25), rgba(255,255,255,0.05));
         }
 
         .card-wrapper:hover::before {
             opacity: 1;
-            animation: rotateGlow 3s linear infinite;
+            animation: rotateGlow 2.5s linear infinite;
         }
 
         .card-title {
@@ -201,7 +207,7 @@
             z-index: 1;
         }
 
-        /* Прозрачная черная кнопка Купить */
+        /* Прозрачная анимированная кнопка */
         .btn-buy {
             display: block;
             width: 100%;
@@ -222,6 +228,25 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Эффект блика на кнопке */
+        .btn-buy::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.25) 50%, rgba(255,255,255,0) 100%);
+            transform: skewX(-25deg);
+            transition: 0.75s;
+        }
+
+        .btn-buy:hover::after {
+            left: 150%;
         }
 
         .btn-buy:hover {
@@ -232,7 +257,6 @@
             box-shadow: 0 0 50px rgba(255, 255, 255, 0.5);
         }
 
-        /* Адаптивность под мобилки */
         @media (max-width: 950px) {
             .services-grid {
                 grid-template-columns: 1fr;
@@ -242,12 +266,14 @@
                 opacity: 1;
                 background: linear-gradient(135deg, rgba(255,255,255,0.3), transparent);
             }
+            .container {
+                margin-top: 50px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Шапка со ссылками -->
     <header>
         <div class="nav-links">
             <a href="https://t.me" target="_blank" rel="noopener noreferrer">Reviews</a>
@@ -256,7 +282,6 @@
         </div>
     </header>
 
-    <!-- Основной контент -->
     <div class="container">
         <h1 class="headline">@ianchikexe - Система не рассуждает.<br>Система ебашит</h1>
 
@@ -287,9 +312,4 @@
             </div>
         </div>
 
-        <!-- Кнопка купить -->
         <a href="https://t.me" target="_blank" rel="noopener noreferrer" class="btn-buy">Купить</a>
-    </div>
-
-</body>
-</html>
