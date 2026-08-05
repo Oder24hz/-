@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ianchikexe — Оптимизация</title>
     
-    <!-- Подключение шрифтов -->
+    <!-- Подключение технологичных шрифтов -->
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
     <link href="https://googleapis.com/css2?family=Space+Grotesk:wght@700;900&family=Unbounded:wght@700;900&display=swap" rel="stylesheet">
@@ -39,7 +39,7 @@
             position: relative;
         }
 
-        /* Задний фон (GIF-анимация с Pinterest) */
+        /* Задний фон через HTML-тег с жестким наложением темного фильтра */
         .bg-gif {
             position: fixed;
             top: 0;
@@ -50,7 +50,6 @@
             z-index: -2;
         }
 
-        /* Затемняющий фильтр поверх гифки */
         .bg-overlay {
             position: fixed;
             top: 0;
@@ -61,7 +60,7 @@
             z-index: -1;
         }
 
-        /* Навигация — по центру */
+        /* Навигация — строго по центру сверху */
         header {
             width: 100%;
             max-width: 1400px;
@@ -117,7 +116,7 @@
             text-shadow: 0 0 40px rgba(255, 255, 255, 0.15);
         }
 
-        /* Сетка карточек — 3 в ряд */
+        /* Сетка карточек — строго 3 штуки в один ряд на ПК */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -126,7 +125,7 @@
             margin-bottom: clamp(40px, 5vw, 60px);
         }
 
-        /* Обёртка карточки для эффекта стекла */
+        /* Обёртка с эффектом стекла */
         .card-wrapper {
             position: relative;
             background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.01));
@@ -150,7 +149,7 @@
             position: relative;
         }
 
-        /* Всплывающий текст для первой карточки */
+        /* Появляющийся кастомный текст при наведении на первую карточку */
         .card-hint {
             position: absolute;
             inset: 0;
@@ -175,7 +174,7 @@
             opacity: 1;
         }
 
-        /* Анимация неонового контура при наведении */
+        /* Анимация вращающегося свечения краев */
         .card-wrapper::before {
             content: '';
             position: absolute;
@@ -223,7 +222,7 @@
             z-index: 1;
         }
 
-        /* Полупрозрачная кнопка Купить */
+        /* Черная прозрачная кнопка Купить */
         .btn-buy {
             display: block;
             width: 100%;
@@ -255,7 +254,7 @@
             box-shadow: 0 0 40px rgba(255, 255, 255, 0.5);
         }
 
-        /* Мобильная адаптивность */
+        /* Перестроение сетки в один столбец на мобильных и планшетах */
         @media (max-width: 900px) {
             .services-grid {
                 grid-template-columns: 1fr;
@@ -263,18 +262,18 @@
             }
             .card-wrapper::before {
                 opacity: 1;
-                background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), transparent);
+                background: linear-gradient(135deg, rgba(255,255,255,0.3), transparent);
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Фоновая гифка и градиентный фильтр -->
+    <!-- Жестко зафиксированная гифка на фоне -->
     <img class="bg-gif" src="https://pinimg.com" alt="background">
     <div class="bg-overlay"></div>
 
-    <!-- Шапка со ссылками -->
+    <!-- Шапка сайта -->
     <header>
         <div class="nav-links">
             <a href="https://t.me" target="_blank" rel="noopener noreferrer">Reviews</a>
@@ -283,12 +282,13 @@
         </div>
     </header>
 
-    <!-- Главный блок -->
+    <!-- Главная секция -->
     <div class="container">
+        <!-- Цитата -->
         <h1 class="headline">@ianchikexe - Система не рассуждает. Система ебашит</h1>
 
         <div class="services-grid">
-            <!-- Карточка 1 -->
+            <!-- Товар 1 -->
             <div class="card-wrapper">
                 <div class="card">
                     <div class="card-title">Custom Bluestacks</div>
@@ -297,7 +297,7 @@
                 </div>
             </div>
 
-            <!-- Карточка 2 -->
+            <!-- Товар 2 -->
             <div class="card-wrapper">
                 <div class="card">
                     <div class="card-title">Windows Optimization</div>
@@ -305,13 +305,8 @@
                 </div>
             </div>
 
-            <!-- Карточка 3 -->
+            <!-- Товар 3 -->
             <div class="card-wrapper">
                 <div class="card">
                     <div class="card-title">Optimization CS2</div>
                     <div class="card-price">500₽</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Кнопка действия -->
