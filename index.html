@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ianchikexe — Оптимизация</title>
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://googleapis.com" rel="stylesheet">
+    <!-- Подключение ультра-жирного шрифта -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Unbounded:wght@800;900&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg-gif: url('https://i.pinimg.com/originals/31/f0/cb/31f0cbbfe52091e54b2f8157ebd60a8f.gif');
+            --bg-gif: url('https://pinimg.com');
             --text-main: #FFFFFF;
             --text-muted: #64748b;
         }
@@ -23,7 +24,6 @@
             user-select: none;
         }
 
-        /* Выравнивание и вывод фона в точности как на твоем старом рабочем проекте */
         body {
             background: linear-gradient(180deg, rgba(5, 5, 8, 0.7) 0%, rgba(5, 5, 8, 0.8) 100%), 
                         var(--bg-gif) no-repeat center center fixed;
@@ -68,7 +68,6 @@
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
 
-        /* Опускаем всю структуру ниже, оставляя ссылки наверху */
         .container {
             max-width: 1300px;
             width: 100%;
@@ -100,21 +99,20 @@
             margin-bottom: 70px;
         }
 
-        /* Тонкая прозрачная неоновая рамка вокруг стеклянного блока */
         .card-wrapper {
             position: relative;
-            background: linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.02));
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.01));
             border-radius: 24px;
             padding: 1px;
             overflow: hidden;
             transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
-        /* Полностью прозрачные матовые блоки, сквозь которые видно твою рабочую гифку */
+        /* Ультра-прозрачные карточки с минимальным блюром */
         .card {
-            background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
+            background: rgba(255, 255, 255, 0.01);
+            backdrop-filter: blur(4px); /* Блюр уменьшен с 25px до 4px */
+            -webkit-backdrop-filter: blur(4px);
             border-radius: 23px;
             padding: 60px 40px;
             text-align: left;
@@ -125,32 +123,30 @@
             position: relative;
         }
 
-        /* Всплывающий кастомный текст при наведении на первую карту */
+        /* Подсказка, выезжающая снизу */
         .card-hint {
             position: absolute;
-            inset: 0;
-            background: rgba(5, 5, 8, 0.95);
-            backdrop-filter: blur(15px);
-            border-radius: 23px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 30px;
-            text-align: center;
-            font-size: 18px;
-            font-weight: 900;
+            bottom: -50px; /* Изначально спрятана внизу */
+            left: 40px;
+            right: 40px;
+            text-align: left;
+            font-size: 14px;
+            font-weight: 800;
             color: #ffffff;
             opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
+            transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.3s ease;
             z-index: 5;
+            pointer-events: none;
+            line-height: 1.3;
         }
 
+        /* При наведении на карту подсказка плавно выезжает наверх */
         .card-wrapper:hover .card-hint {
             opacity: 1;
+            transform: translateY(-75px); /* Сдвиг вверх под цену */
         }
 
-        /* Переливание краев рамки при наведении */
+        /* Анимация краев */
         .card-wrapper::before {
             content: '';
             position: absolute;
@@ -158,7 +154,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: conic-gradient(transparent, transparent, transparent, rgba(255, 255, 255, 0.4), transparent);
+            background: conic-gradient(transparent, transparent, transparent, rgba(255, 255, 255, 0.3), transparent);
             transform: rotate(0deg);
             transition: transform 0.5s linear;
             z-index: 0;
@@ -173,7 +169,7 @@
 
         .card-wrapper:hover {
             transform: translateY(-12px);
-            background: linear-gradient(135deg, rgba(255,255,255,0.3), rgba(255,255,255,0.08));
+            background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.03));
         }
 
         .card-wrapper:hover::before {
@@ -189,6 +185,7 @@
             font-weight: 900;
             margin-bottom: 35px;
             z-index: 1;
+            transition: transform 0.3s ease;
         }
 
         .card-price {
@@ -196,9 +193,17 @@
             font-weight: 900;
             letter-spacing: -1px;
             z-index: 1;
+            transition: transform 0.3s ease;
         }
 
-        /* Прозрачная черная объемная кнопка с эффектом блика */
+        /* Легкое смещение заголовка и цены вверх при наведении, чтобы освободить место снизу */
+        .card-wrapper:hover .card-title {
+            transform: translateY(-15px);
+        }
+        .card-wrapper:hover .card-price {
+            transform: translateY(-25px);
+        }
+
         .btn-buy {
             display: block;
             width: 100%;
@@ -273,7 +278,7 @@
         <h1 class="headline">@ianchikexe - Система не рассуждает.<br>Система ебашит</h1>
 
         <div class="services-grid">
-            <!-- Карточка 1 -->
+            <!-- Карточка 1 с выезжающим текстом -->
             <div class="card-wrapper">
                 <div class="card">
                     <div class="card-title">Custom Bluestacks</div>
