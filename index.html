@@ -27,8 +27,7 @@
         }
 
         body {
-            /* Задний фон с твоей GIF и затемнением для читаемости */
-            background: linear-gradient(180deg, rgba(5, 5, 8, 0.8) 0%, rgba(5, 5, 8, 0.9) 100%), url('https://i.pinimg.com/originals/69/7c/b0/697cb01edaa30cd11c5c06cc5b924411.gif') no-repeat center center fixed;
+            background: linear-gradient(180deg, rgba(5, 5, 8, 0.8) 0%, rgba(5, 5, 8, 0.9) 100%), url('https://pinimg.com') no-repeat center center fixed;
             background-size: cover;
             color: var(--text-main);
             font-family: 'Space Grotesk', sans-serif;
@@ -39,38 +38,30 @@
             overflow-x: hidden;
         }
 
-        /* Навигация */
+        /* Навигация — строго по центру сверху */
         header {
             width: 100%;
             max-width: 1400px;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            padding: clamp(20px, 3vw, 40px) clamp(20px, 4vw, 60px);
+            padding: clamp(25px, 4vw, 45px) 20px;
             z-index: 10;
-        }
-
-        .logo {
-            font-family: 'Unbounded', sans-serif;
-            font-size: clamp(18px, 2vw, 26px);
-            font-weight: 900;
-            letter-spacing: -1px;
-            text-transform: lowercase;
         }
 
         .nav-links {
             display: flex;
-            gap: clamp(15px, 3vw, 40px);
+            gap: clamp(20px, 4vw, 50px);
         }
 
         .nav-links a {
             color: var(--text-muted);
             text-decoration: none;
-            font-size: clamp(12px, 1.2vw, 15px);
+            font-size: clamp(12px, 1.3vw, 15px);
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 2px;
-            transition: color 0.3s ease;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
         }
 
         .nav-links a:hover {
@@ -91,15 +82,15 @@
             align-items: center;
         }
 
-        /* Главный заголовок */
+        /* Главный заголовок с новой цитатой */
         .headline {
             font-family: 'Unbounded', sans-serif;
-            font-size: clamp(24px, 4vw, 52px);
+            font-size: clamp(20px, 3.2vw, 44px);
             font-weight: 900;
-            line-height: 1.15;
-            letter-spacing: -1.5px;
+            line-height: 1.3;
+            letter-spacing: -1px;
             margin-bottom: clamp(40px, 6vw, 80px);
-            max-width: 950px;
+            max-width: 1000px;
             text-shadow: 0 0 40px rgba(255, 255, 255, 0.15);
         }
 
@@ -127,12 +118,38 @@
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-radius: 19px;
-            padding: clamp(30px, 4vw, 45px) clamp(25px, 3vw, 35px);
+            padding: clamp(35px, 4vw, 50px) clamp(25px, 3vw, 35px);
             text-align: left;
             height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            position: relative;
+        }
+
+        /* Появляющийся кастомный текст при наведении на первую карточку */
+        .card-hint {
+            position: absolute;
+            inset: 0;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(15px);
+            border-radius: 19px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 25px;
+            text-align: center;
+            font-size: clamp(14px, 1.4vw, 18px);
+            font-weight: 700;
+            color: #ffffff;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            z-index: 5;
+        }
+
+        .card-wrapper:hover .card-hint {
+            opacity: 1;
         }
 
         /* Анимация вращающегося свечения краев */
@@ -183,7 +200,7 @@
             z-index: 1;
         }
 
-        /* Кнопка Купить */
+        /* Черная прозрачная кнопка Купить */
         .btn-buy {
             display: block;
             width: 100%;
@@ -194,22 +211,24 @@
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: #000000;
-            background: #ffffff;
-            border: none;
+            color: #ffffff;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
             border-radius: 14px;
             text-decoration: none;
             cursor: pointer;
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.25);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
         .btn-buy:hover {
             transform: scale(1.04);
-            background: #000000;
-            color: #ffffff;
-            box-shadow: 0 0 40px rgba(255, 255, 255, 0.6);
-            outline: 2px solid rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 1);
+            color: #000000;
+            border-color: #ffffff;
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.5);
         }
 
         /* Перестроение сетки в один столбец на мобильных и планшетах */
@@ -217,14 +236,6 @@
             .services-grid {
                 grid-template-columns: 1fr;
                 max-width: 450px;
-            }
-            header {
-                flex-direction: column;
-                gap: 20px;
-                padding-bottom: 20px;
-            }
-            .container {
-                padding-top: 20px;
             }
             .card-wrapper::before {
                 opacity: 1;
@@ -235,8 +246,8 @@
 </head>
 <body>
 
+    <!-- Шапка сайта (кнопки выровнены по центру) -->
     <header>
-        <div class="logo">ianchikexe</div>
         <div class="nav-links">
             <a href="https://t.me" target="_blank" rel="noopener noreferrer">Reviews</a>
             <a href="https://t.me" target="_blank" rel="noopener noreferrer">Channel</a>
@@ -244,35 +255,39 @@
         </div>
     </header>
 
+    <!-- Главная секция -->
     <div class="container">
-        <h1 class="headline">ianchikexe. Твоя система не думает — она действует</h1>
+        <!-- Обновленная цитата -->
+        <h1 class="headline">@ianchikexe - Хватит размышлять. Система должна выдавать результат, а не строить гипотезы</h1>
 
         <div class="services-grid">
-            <!-- Товар 1 -->
+            <!-- Товар 1 (Custom Bluestacks с подсказкой при наведении) -->
             <div class="card-wrapper">
                 <div class="card">
-                    <div class="card-title">Optimization Windows</div>
-                    <div class="card-price">999₽</div>
+                    <div class="card-title">Custom Bluestacks</div>
+                    <div class="card-price">1000₽</div>
+                    <div class="card-hint">напишу кастомный эмулятор на ваш вкус</div>
                 </div>
             </div>
 
             <!-- Товар 2 -->
             <div class="card-wrapper">
                 <div class="card">
-                    <div class="card-title">Optimization Bluestacks</div>
-                    <div class="card-price">999₽</div>
+                    <div class="card-title">Windows Optimization</div>
+                    <div class="card-price">400₽</div>
                 </div>
             </div>
 
             <!-- Товар 3 -->
             <div class="card-wrapper">
                 <div class="card">
-                    <div class="card-title">Virus Removal</div>
-                    <div class="card-price">999₽</div>
+                    <div class="card-title">Optimization CS2</div>
+                    <div class="card-price">500₽</div>
                 </div>
             </div>
         </div>
 
+        <!-- Кнопка действия -->
         <a href="https://t.me" target="_blank" rel="noopener noreferrer" class="btn-buy">Купить</a>
     </div>
 
