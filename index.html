@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ianchikexe — Оптимизация</title>
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://googleapis.com" rel="stylesheet">
+    <!-- Подключение ультра-жирного шрифта -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Unbounded:wght@800;900&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg-gif: url('https://i.pinimg.com/originals/31/f0/cb/31f0cbbfe52091e54b2f8157ebd60a8f.gif');
+            --bg-gif: url('https://pinimg.com');
             --text-main: #FFFFFF;
             --text-muted: #64748b;
         }
@@ -211,6 +212,7 @@
             z-index: 1;
         }
 
+        /* Кнопка сделана полностью прозрачной матовой, один в один как карточки */
         .btn-buy {
             display: block;
             width: 100%;
@@ -221,16 +223,34 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             color: #ffffff;
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.01);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
             border: 2px solid rgba(255, 255, 255, 0.2);
             border-radius: 16px;
             text-decoration: none;
             cursor: pointer;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-buy::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 100%);
+            transform: skewX(-25deg);
+            transition: 0.75s;
+        }
+
+        .btn-buy:hover::after {
+            left: 150%;
         }
 
         .btn-buy:hover {
@@ -257,9 +277,9 @@
 
     <header>
         <div class="nav-links">
-            <a href="https://t.me" target="_blank" rel="noopener noreferrer">Reviews</a>
-            <a href="https://t.me" target="_blank" rel="noopener noreferrer">Channel</a>
-            <a href="https://t.me" target="_blank" rel="noopener noreferrer">Support</a>
+            <a href="https://t.me/ianchikreviews" target="_blank" rel="noopener noreferrer">Reviews</a>
+            <a href="https://t.me/ianchik_exe" target="_blank" rel="noopener noreferrer">Channel</a>
+            <a href="https://t.me/ianchikexe" target="_blank" rel="noopener noreferrer">Support</a>
         </div>
     </header>
 
@@ -290,7 +310,7 @@
             </div>
         </div>
 
-        <a href="https://t.me" target="_blank" rel="noopener noreferrer" class="btn-buy">Купить</a>
+        <a href="https://t.me/ianchikexe" target="_blank" rel="noopener noreferrer" class="btn-buy">Купить</a>
     </div>
 
 </body>
