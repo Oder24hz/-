@@ -11,6 +11,7 @@
     <link href="https://googleapis.com/css2?family=Unbounded:wght@800;900&display=swap" rel="stylesheet">
     
     <style>
+        /* Переменная гифки из твоего рабочего шаблона */
         :root {
             --bg-gif: url('https://pinimg.com');
             --text-main: #FFFFFF;
@@ -24,6 +25,7 @@
             user-select: none;
         }
 
+        /* Задний фон в точности как на твоем старом рабочем сайте */
         body {
             background: linear-gradient(180deg, rgba(5, 5, 8, 0.7) 0%, rgba(5, 5, 8, 0.8) 100%), 
                         var(--bg-gif) no-repeat center center fixed;
@@ -99,19 +101,19 @@
             margin-bottom: 70px;
         }
 
+        /* Общая структура обертки карточек */
         .card-wrapper {
             position: relative;
             background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.01));
             border-radius: 24px;
             padding: 1px;
             overflow: hidden;
-            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
         /* Ультра-прозрачные карточки с минимальным блюром */
         .card {
             background: rgba(255, 255, 255, 0.01);
-            backdrop-filter: blur(4px); /* Блюр уменьшен с 25px до 4px */
+            backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
             border-radius: 23px;
             padding: 60px 40px;
@@ -123,10 +125,10 @@
             position: relative;
         }
 
-        /* Подсказка, выезжающая снизу */
+        /* Подсказка для ПЕРВОЙ карточки, выезжающая снизу */
         .card-hint {
             position: absolute;
-            bottom: -50px; /* Изначально спрятана внизу */
+            bottom: -50px;
             left: 40px;
             right: 40px;
             text-align: left;
@@ -140,13 +142,7 @@
             line-height: 1.3;
         }
 
-        /* При наведении на карту подсказка плавно выезжает наверх */
-        .card-wrapper:hover .card-hint {
-            opacity: 1;
-            transform: translateY(-75px); /* Сдвиг вверх под цену */
-        }
-
-        /* Анимация краев */
+        /* Логика анимаций для вращения неоновых краев рамки (работает для всех карт) */
         .card-wrapper::before {
             content: '';
             position: absolute;
@@ -167,16 +163,47 @@
             100% { transform: rotate(360deg); }
         }
 
-        .card-wrapper:hover {
-            transform: translateY(-12px);
-            background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.03));
-        }
-
+        /* СВЕЧЕНИЕ ПРИ НАВЕДЕНИИ (Для всех карточек) */
         .card-wrapper:hover::before {
             opacity: 1;
             animation: rotateGlow 2.5s linear infinite;
         }
 
+        /* ПЕРВАЯ КАРТОЧКА: только она приподнимается вверх и меняет рамку */
+        .first-card {
+            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.4s ease;
+        }
+        .first-card:hover {
+            transform: translateY(-12px);
+            background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.03));
+        }
+
+        /* Эффект выезда текста внутри первой карточки */
+        .first-card:hover .card-hint {
+            opacity: 1;
+            transform: translateY(-75px);
+        }
+
+        /* Внутренние элементы первой карточки смещаются, чтобы дать место тексту */
+        .first-card .card-title, .first-card .card-price {
+            transition: transform 0.3s ease;
+        }
+        .first-card:hover .card-title {
+            transform: translateY(-15px);
+        }
+        .first-card:hover .card-price {
+            transform: translateY(-25px);
+        }
+
+        /* ВТОРАЯ И ТРЕТЬЯ КАРТОЧКИ: Не двигаются, только подсвечивают рамку */
+        .static-card {
+            transition: background 0.3s ease;
+        }
+        .static-card:hover {
+            background: linear-gradient(135deg, rgba(255,255,255,0.18), rgba(255,255,255,0.02));
+        }
+
+        /* Обычные стили текста внутри карточек */
         .card-title {
             font-size: 13px;
             color: var(--text-muted);
@@ -185,7 +212,6 @@
             font-weight: 900;
             margin-bottom: 35px;
             z-index: 1;
-            transition: transform 0.3s ease;
         }
 
         .card-price {
@@ -193,17 +219,9 @@
             font-weight: 900;
             letter-spacing: -1px;
             z-index: 1;
-            transition: transform 0.3s ease;
         }
 
-        /* Легкое смещение заголовка и цены вверх при наведении, чтобы освободить место снизу */
-        .card-wrapper:hover .card-title {
-            transform: translateY(-15px);
-        }
-        .card-wrapper:hover .card-price {
-            transform: translateY(-25px);
-        }
-
+        /* Прозрачная кнопка */
         .btn-buy {
             display: block;
             width: 100%;
@@ -278,9 +296,19 @@
         <h1 class="headline">@ianchikexe - Система не рассуждает.<br>Система ебашит</h1>
 
         <div class="services-grid">
-            <!-- Карточка 1 с выезжающим текстом -->
-            <div class="card-wrapper">
+            <!-- Карточка 1 (Класс анимированный: first-card) -->
+            <div class="card-wrapper first-card">
                 <div class="card">
+                    <div class="card-title">Custom Bluestacks</div>
+                    <div class="card-price">1000₽</div>
+                    <div class="card-hint">напишу кастомный эмулятор на ваш вкус</div>
+                </div>
+            </div>
+
+            <!-- Карточка 2 (Класс статичный: static-card) -->
+            <div class="card-wrapper static-card">
+                <div class="card">
+
                     <div class="card-title">Custom Bluestacks</div>
                     <div class="card-price">1000₽</div>
                     <div class="card-hint">напишу кастомный эмулятор на ваш вкус</div>
