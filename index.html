@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ianchikexe — Оптимизация</title>
     
-    <!-- Подключение технологичных шрифтов -->
+    <!-- Подключение шрифтов -->
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
     <link href="https://googleapis.com/css2?family=Space+Grotesk:wght@700;900&family=Unbounded:wght@700;900&display=swap" rel="stylesheet">
@@ -34,11 +34,12 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            overflow-y: auto;
             overflow-x: hidden;
             position: relative;
         }
 
-        /* Задний фон через HTML-тег с жестким наложением темного фильтра */
+        /* Задний фон (GIF-анимация с Pinterest) */
         .bg-gif {
             position: fixed;
             top: 0;
@@ -49,6 +50,7 @@
             z-index: -2;
         }
 
+        /* Затемняющий фильтр поверх гифки */
         .bg-overlay {
             position: fixed;
             top: 0;
@@ -59,14 +61,14 @@
             z-index: -1;
         }
 
-        /* Навигация — строго по центру сверху */
+        /* Навигация — по центру */
         header {
             width: 100%;
             max-width: 1400px;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: clamp(25px, 4vw, 45px) 20px;
+            padding: clamp(20px, 3vw, 35px) 20px;
             z-index: 10;
         }
 
@@ -78,7 +80,7 @@
         .nav-links a {
             color: var(--text-muted);
             text-decoration: none;
-            font-size: clamp(12px, 1.3vw, 15px);
+            font-size: clamp(12px, 1.2vw, 15px);
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -94,12 +96,10 @@
         .container {
             max-width: 1200px;
             width: 100%;
-            padding: 0 clamp(20px, 4vw, 60px) clamp(40px, 6vw, 100px);
+            padding: 0 clamp(20px, 4vw, 60px) 40px;
             text-align: center;
-            flex-grow: 1;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
             z-index: 2;
         }
@@ -107,25 +107,26 @@
         /* Главный заголовок с цитатой */
         .headline {
             font-family: 'Unbounded', sans-serif;
-            font-size: clamp(22px, 3.5vw, 48px);
+            font-size: clamp(20px, 3vw, 40px);
             font-weight: 900;
             line-height: 1.3;
             letter-spacing: -1px;
-            margin-bottom: clamp(40px, 6vw, 80px);
+            margin-top: 20px;
+            margin-bottom: clamp(30px, 5vw, 60px);
             max-width: 1000px;
             text-shadow: 0 0 40px rgba(255, 255, 255, 0.15);
         }
 
-        /* Сетка карточек — строго 3 штуки в один ряд на ПК */
+        /* Сетка карточек — 3 в ряд */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: clamp(20px, 3vw, 35px);
             width: 100%;
-            margin-bottom: clamp(40px, 6vw, 80px);
+            margin-bottom: clamp(40px, 5vw, 60px);
         }
 
-        /* Обёртка с эффектом стекла */
+        /* Обёртка карточки для эффекта стекла */
         .card-wrapper {
             position: relative;
             background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.01));
@@ -140,7 +141,7 @@
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-radius: 19px;
-            padding: clamp(35px, 4vw, 50px) clamp(25px, 3vw, 35px);
+            padding: clamp(30px, 3.5vw, 45px) clamp(20px, 2.5vw, 30px);
             text-align: left;
             height: 100%;
             display: flex;
@@ -149,7 +150,7 @@
             position: relative;
         }
 
-        /* Появляющийся кастомный текст при наведении на первую карточку */
+        /* Всплывающий текст для первой карточки */
         .card-hint {
             position: absolute;
             inset: 0;
@@ -161,7 +162,7 @@
             justify-content: center;
             padding: 25px;
             text-align: center;
-            font-size: clamp(14px, 1.4vw, 18px);
+            font-size: clamp(13px, 1.3vw, 17px);
             font-weight: 700;
             color: #ffffff;
             opacity: 0;
@@ -174,7 +175,7 @@
             opacity: 1;
         }
 
-        /* Анимация вращающегося свечения краев */
+        /* Анимация неонового контура при наведении */
         .card-wrapper::before {
             content: '';
             position: absolute;
@@ -205,31 +206,31 @@
         }
 
         .card-title {
-            font-size: clamp(11px, 1.1vw, 13px);
+            font-size: clamp(11px, 1vw, 13px);
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 2px;
             font-weight: 700;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             z-index: 1;
         }
 
         .card-price {
             font-family: 'Unbounded', sans-serif;
-            font-size: clamp(28px, 3.2vw, 44px);
+            font-size: clamp(26px, 2.8vw, 40px);
             font-weight: 900;
             letter-spacing: -1px;
             z-index: 1;
         }
 
-        /* Черная прозрачная кнопка Купить */
+        /* Полупрозрачная кнопка Купить */
         .btn-buy {
             display: block;
             width: 100%;
             max-width: clamp(240px, 30vw, 380px);
-            padding: clamp(16px, 2vw, 22px) 0;
+            padding: clamp(16px, 1.8vw, 20px) 0;
             font-family: 'Unbounded', sans-serif;
-            font-size: clamp(16px, 1.5vw, 20px);
+            font-size: clamp(15px, 1.3vw, 18px);
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -243,6 +244,7 @@
             cursor: pointer;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+            margin-bottom: 20px;
         }
 
         .btn-buy:hover {
@@ -253,7 +255,7 @@
             box-shadow: 0 0 40px rgba(255, 255, 255, 0.5);
         }
 
-        /* Перестроение сетки в один столбец на мобильных и планшетах */
+        /* Мобильная адаптивность */
         @media (max-width: 900px) {
             .services-grid {
                 grid-template-columns: 1fr;
@@ -261,18 +263,18 @@
             }
             .card-wrapper::before {
                 opacity: 1;
-                background: linear-gradient(135deg, rgba(255,255,255,0.3), transparent);
+                background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), transparent);
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Жестко зафиксированная гифка на фоне -->
-    <img class="bg-gif" src="https://i.pinimg.com/originals/69/7c/b0/697cb01edaa30cd11c5c06cc5b924411.gif" alt="background">
+    <!-- Фоновая гифка и градиентный фильтр -->
+    <img class="bg-gif" src="https://pinimg.com" alt="background">
     <div class="bg-overlay"></div>
 
-    <!-- Шапка сайта -->
+    <!-- Шапка со ссылками -->
     <header>
         <div class="nav-links">
             <a href="https://t.me" target="_blank" rel="noopener noreferrer">Reviews</a>
@@ -281,13 +283,12 @@
         </div>
     </header>
 
-    <!-- Главная секция -->
+    <!-- Главный блок -->
     <div class="container">
-        <!-- Цитата -->
         <h1 class="headline">@ianchikexe - Система не рассуждает. Система ебашит</h1>
 
         <div class="services-grid">
-            <!-- Товар 1 (Custom Bluestacks с подсказкой при наведении) -->
+            <!-- Карточка 1 -->
             <div class="card-wrapper">
                 <div class="card">
                     <div class="card-title">Custom Bluestacks</div>
@@ -296,7 +297,7 @@
                 </div>
             </div>
 
-            <!-- Товар 2 -->
+            <!-- Карточка 2 -->
             <div class="card-wrapper">
                 <div class="card">
                     <div class="card-title">Windows Optimization</div>
@@ -304,6 +305,13 @@
                 </div>
             </div>
 
-            <!-- Товар 3 -->
+            <!-- Карточка 3 -->
             <div class="card-wrapper">
                 <div class="card">
+                    <div class="card-title">Optimization CS2</div>
+                    <div class="card-price">500₽</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Кнопка действия -->
