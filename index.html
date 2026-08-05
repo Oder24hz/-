@@ -5,12 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ianchikexe — Оптимизация</title>
     
-    <!-- Подключение ультра-жирного шрифта -->
-    <link rel="preconnect" href="https://googleapis.com">
-    <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Unbounded:wght@800;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://googleapis.com" rel="stylesheet">
     
     <style>
+        :root {
+            --bg-gif: url('https://i.pinimg.com/originals/31/f0/cb/31f0cbbfe52091e54b2f8157ebd60a8f.gif');
+            --text-main: #FFFFFF;
+            --text-muted: #64748b;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -18,9 +23,12 @@
             user-select: none;
         }
 
+        /* Выравнивание и вывод фона в точности как на твоем старом рабочем проекте */
         body {
-            background-color: #050508;
-            color: #FFFFFF;
+            background: linear-gradient(180deg, rgba(5, 5, 8, 0.7) 0%, rgba(5, 5, 8, 0.8) 100%), 
+                        var(--bg-gif) no-repeat center center fixed;
+            background-size: cover;
+            color: var(--text-main);
             font-family: 'Unbounded', sans-serif;
             min-height: 100vh;
             display: flex;
@@ -28,33 +36,6 @@
             align-items: center;
             overflow-y: auto;
             overflow-x: hidden;
-            position: relative;
-        }
-
-        /* Фоновый слой, который пробьет блокировку хостинга */
-        .bg-gif-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
-        }
-
-        .bg-gif-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .bg-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(180deg, rgba(5, 5, 8, 0.5) 0%, rgba(5, 5, 8, 0.7) 100%);
-            z-index: -1;
         }
 
         header {
@@ -73,7 +54,7 @@
         }
 
         .nav-links a {
-            color: #64748b;
+            color: var(--text-muted);
             text-decoration: none;
             font-size: 16px;
             font-weight: 900;
@@ -83,10 +64,11 @@
         }
 
         .nav-links a:hover {
-            color: #FFFFFF;
+            color: var(--text-main);
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
 
+        /* Опускаем всю структуру ниже, оставляя ссылки наверху */
         .container {
             max-width: 1300px;
             width: 100%;
@@ -97,7 +79,7 @@
             align-items: center;
             flex-grow: 1;
             z-index: 2;
-            margin-top: 120px; /* Контент сдвинут ниже */
+            margin-top: 120px;
         }
 
         .headline {
@@ -107,13 +89,7 @@
             letter-spacing: -1px;
             margin-bottom: 70px;
             max-width: 1100px;
-            animation: glowPulse 3s infinite ease-in-out;
-        }
-
-        @keyframes glowPulse {
-            0% { text-shadow: 0 0 20px rgba(255, 255, 255, 0.1); }
-            50% { text-shadow: 0 0 40px rgba(255, 255, 255, 0.3); }
-            100% { text-shadow: 0 0 20px rgba(255, 255, 255, 0.1); }
+            text-shadow: 0 0 40px rgba(255, 255, 255, 0.15);
         }
 
         .services-grid {
@@ -124,16 +100,17 @@
             margin-bottom: 70px;
         }
 
+        /* Тонкая прозрачная неоновая рамка вокруг стеклянного блока */
         .card-wrapper {
             position: relative;
-            background: linear-gradient(135deg, rgba(255,255,255,0.18), rgba(255,255,255,0.03));
+            background: linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.02));
             border-radius: 24px;
             padding: 1px;
             overflow: hidden;
             transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
-        /* Полностью прозрачные матовые карточки без серой заливки */
+        /* Полностью прозрачные матовые блоки, сквозь которые видно твою рабочую гифку */
         .card {
             background: rgba(255, 255, 255, 0.02);
             backdrop-filter: blur(25px);
@@ -148,6 +125,7 @@
             position: relative;
         }
 
+        /* Всплывающий кастомный текст при наведении на первую карту */
         .card-hint {
             position: absolute;
             inset: 0;
@@ -172,6 +150,7 @@
             opacity: 1;
         }
 
+        /* Переливание краев рамки при наведении */
         .card-wrapper::before {
             content: '';
             position: absolute;
@@ -194,7 +173,7 @@
 
         .card-wrapper:hover {
             transform: translateY(-12px);
-            background: linear-gradient(135deg, rgba(255,255,255,0.35), rgba(255,255,255,0.08));
+            background: linear-gradient(135deg, rgba(255,255,255,0.3), rgba(255,255,255,0.08));
         }
 
         .card-wrapper:hover::before {
@@ -204,7 +183,7 @@
 
         .card-title {
             font-size: 13px;
-            color: #64748b;
+            color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 2px;
             font-weight: 900;
@@ -219,7 +198,7 @@
             z-index: 1;
         }
 
-        /* Прозрачная черная кнопка с бликом */
+        /* Прозрачная черная объемная кнопка с эффектом блика */
         .btn-buy {
             display: block;
             width: 100%;
@@ -282,12 +261,6 @@
 </head>
 <body>
 
-    <!-- Тег с обходом CORS блокировок через анонимный запрос -->
-    <div class="bg-gif-container">
-        <img src="https://pinimg.com" crossorigin="anonymous" referrerpolicy="no-referrer" alt="background">
-    </div>
-    <div class="bg-overlay"></div>
-
     <header>
         <div class="nav-links">
             <a href="https://t.me" target="_blank" rel="noopener noreferrer">Reviews</a>
@@ -300,6 +273,7 @@
         <h1 class="headline">@ianchikexe - Система не рассуждает.<br>Система ебашит</h1>
 
         <div class="services-grid">
+            <!-- Карточка 1 -->
             <div class="card-wrapper">
                 <div class="card">
                     <div class="card-title">Custom Bluestacks</div>
@@ -308,6 +282,7 @@
                 </div>
             </div>
 
+            <!-- Карточка 2 -->
             <div class="card-wrapper">
                 <div class="card">
                     <div class="card-title">Windows Optimization</div>
@@ -315,6 +290,7 @@
                 </div>
             </div>
 
+            <!-- Карточка 3 -->
             <div class="card-wrapper">
                 <div class="card">
                     <div class="card-title">Optimization CS2</div>
