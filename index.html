@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ianchikexe — Оптимизация</title>
     
+    <!-- Подключение жирных шрифтов -->
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Inter:wght@700;900&display=swap" rel="stylesheet">
+    <link href="https://googleapis.com/css2?family=Space+Grotesk:wght@700;900&family=Unbounded:wght@700;900&display=swap" rel="stylesheet">
     
     <style>
         * {
@@ -17,18 +18,27 @@
             user-select: none;
         }
 
+        :root {
+            --bg-color: #050508;
+            --card-bg: rgba(10, 10, 15, 0.7);
+            --text-main: #ffffff;
+            --text-muted: #64748b;
+        }
+
         body {
-            background-color: #050508;
-            color: #ffffff;
-            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Space Grotesk', sans-serif;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            overflow: hidden;
+            overflow-y: auto;
+            overflow-x: hidden;
             position: relative;
         }
 
+        /* Задний фон через прокси, чтобы обойти блокировку Pinterest */
         .bg-gif {
             position: fixed;
             top: 0;
@@ -45,84 +55,87 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(180deg, rgba(5, 5, 8, 0.8) 0%, rgba(5, 5, 8, 0.85) 100%);
+            background: linear-gradient(180deg, rgba(5, 5, 8, 0.75) 0%, rgba(5, 5, 8, 0.85) 100%);
             z-index: -1;
         }
 
         header {
             width: 100%;
-            max-width: 1200px;
+            max-width: 1400px;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 25px 20px;
+            padding: 35px 20px;
             z-index: 10;
         }
 
         .nav-links {
             display: flex;
-            gap: 40px;
+            gap: 50px;
         }
 
         .nav-links a {
-            color: #64748b;
+            color: var(--text-muted);
             text-decoration: none;
-            font-size: 13px;
+            font-size: 15px;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            transition: color 0.2s ease;
+            letter-spacing: 2px;
+            transition: color 0.3s ease;
         }
 
         .nav-links a:hover {
-            color: #ffffff;
+            color: var(--text-main);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             width: 100%;
-            padding: 0 40px 30px;
+            padding: 0 40px 60px;
             text-align: center;
-            flex-grow: 1;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
             z-index: 2;
         }
 
         .headline {
-            font-size: 26px;
+            font-family: 'Unbounded', sans-serif;
+            font-size: 38px;
             font-weight: 900;
-            line-height: 1.4;
-            margin-bottom: 40px;
-            max-width: 900px;
-            text-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+            line-height: 1.3;
+            letter-spacing: -1px;
+            margin-top: 10px;
+            margin-bottom: 60px;
+            max-width: 1000px;
+            text-shadow: 0 0 40px rgba(255, 255, 255, 0.15);
         }
 
+        /* Возвращаем большие жирные карточки */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
+            gap: 35px;
             width: 100%;
-            margin-bottom: 45px;
+            margin-bottom: 60px;
         }
 
         .card-wrapper {
             position: relative;
             background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.01));
-            border-radius: 16px;
+            border-radius: 20px;
             padding: 1px;
             overflow: hidden;
-            transition: transform 0.3s ease;
+            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
         .card {
-            background: rgba(10, 10, 15, 0.75);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border-radius: 15px;
-            padding: 35px 25px;
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 19px;
+            padding: 50px 35px;
             text-align: left;
             height: 100%;
             display: flex;
@@ -135,18 +148,19 @@
             position: absolute;
             inset: 0;
             background: rgba(10, 10, 15, 0.95);
-            border-radius: 15px;
+            backdrop-filter: blur(15px);
+            border-radius: 19px;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 25px;
             text-align: center;
-            font-size: 14px;
+            font-size: 17px;
             font-weight: 700;
             color: #ffffff;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.2s ease;
+            transition: opacity 0.3s ease;
             z-index: 5;
         }
 
@@ -161,8 +175,9 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: conic-gradient(transparent, transparent, transparent, rgba(255, 255, 255, 0.3), transparent);
+            background: conic-gradient(transparent, transparent, transparent, rgba(255, 255, 255, 0.4), transparent);
             transform: rotate(0deg);
+            transition: transform 0.5s linear;
             z-index: 0;
             opacity: 0;
             pointer-events: none;
@@ -174,68 +189,79 @@
         }
 
         .card-wrapper:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
         }
 
         .card-wrapper:hover::before {
             opacity: 1;
-            animation: rotateGlow 2.5s linear infinite;
+            animation: rotateGlow 3s linear infinite;
         }
 
         .card-title {
-            font-size: 11px;
-            color: #64748b;
+            font-size: 13px;
+            color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
             font-weight: 700;
-            margin-bottom: 15px;
+            margin-bottom: 25px;
+            z-index: 1;
         }
 
         .card-price {
-            font-size: 32px;
+            font-family: 'Unbounded', sans-serif;
+            font-size: 44px;
             font-weight: 900;
-            letter-spacing: -0.5px;
+            letter-spacing: -1px;
+            z-index: 1;
         }
 
         .btn-buy {
             display: block;
             width: 100%;
-            max-width: 320px;
-            padding: 16px 0;
-            font-size: 16px;
+            max-width: 380px;
+            padding: 20px 0;
+            font-family: 'Unbounded', sans-serif;
+            font-size: 20px;
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 1px;
             color: #ffffff;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.4);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.15);
-            border-radius: 12px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 14px;
             text-decoration: none;
             cursor: pointer;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+            text-align: center;
         }
 
         .btn-buy:hover {
-            transform: scale(1.03);
-            background: #ffffff;
+            transform: scale(1.04);
+            background: rgba(255, 255, 255, 1);
             color: #000000;
             border-color: #ffffff;
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.5);
         }
 
-        @media (max-width: 800px) {
-            body { overflow-y: auto; }
-            .services-grid { grid-template-columns: 1fr; max-width: 400px; }
-            .headline { font-size: 20px; }
+        @media (max-width: 900px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+                max-width: 450px;
+            }
+            .card-wrapper::before {
+                opacity: 1;
+                background: linear-gradient(135deg, rgba(255,255,255,0.3), transparent);
+            }
         }
     </style>
 </head>
 <body>
 
-    <img class="bg-gif" src="./background.gif" alt="background">
+    <!-- Ссылка на гифку обернута через images.weserv.nl, чтобы обойти блок Pinterest -->
+    <img class="bg-gif" src="https://weserv.nl" alt="background">
     <div class="bg-overlay"></div>
 
     <header>
