@@ -5,20 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ianchikexe — Оптимизация</title>
     
-    <!-- Подключение ультра-жирного шрифта -->
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
     <link href="https://googleapis.com/css2?family=Unbounded:wght@800;900&display=swap" rel="stylesheet">
     
     <style>
-        /* Переменные из твоего старого сайта */
-        :root {
-            --bg-gif: url('https://pinimg.com');
-            --card-bg: rgba(10, 10, 15, 0.45); /* Уменьшена непрозрачность для максимальной прозрачности */
-            --text-main: #FFFFFF;
-            --text-muted: #64748b;
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -26,11 +17,12 @@
             user-select: none;
         }
 
+        /* Гифка встроена текстом напрямую, чтобы исключить блокировки */
         body {
-            background: linear-gradient(180deg, rgba(5, 5, 8, 0.7) 0%, rgba(5, 5, 8, 0.8) 100%), 
-                        var(--bg-gif) no-repeat center center fixed;
+            background: linear-gradient(180deg, rgba(5, 5, 8, 0.4) 0%, rgba(5, 5, 8, 0.5) 100%), 
+                        url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7') no-repeat center center fixed;
             background-size: cover;
-            color: var(--text-main);
+            color: #FFFFFF;
             font-family: 'Unbounded', sans-serif;
             min-height: 100vh;
             display: flex;
@@ -40,7 +32,6 @@
             overflow-x: hidden;
         }
 
-        /* Кнопки навигации — остаются строго сверху */
         header {
             width: 100%;
             max-width: 1400px;
@@ -57,7 +48,7 @@
         }
 
         .nav-links a {
-            color: var(--text-muted);
+            color: #64748b;
             text-decoration: none;
             font-size: 16px;
             font-weight: 900;
@@ -67,11 +58,10 @@
         }
 
         .nav-links a:hover {
-            color: var(--text-main);
+            color: #FFFFFF;
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
 
-        /* Общий контейнер смещен сильно ниже */
         .container {
             max-width: 1300px;
             width: 100%;
@@ -82,10 +72,9 @@
             align-items: center;
             flex-grow: 1;
             z-index: 2;
-            margin-top: 110px; /* Жесткий сдвиг всего контента вниз */
+            margin-top: 120px; /* Смещение блоков ниже */
         }
 
-        /* Анимированная жирная цитата */
         .headline {
             font-size: 42px;
             font-weight: 900;
@@ -110,10 +99,9 @@
             margin-bottom: 70px;
         }
 
-        /* Обёртка с эффектом прозрачного стекла */
         .card-wrapper {
             position: relative;
-            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02));
+            background: linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.02));
             border-radius: 24px;
             padding: 1px;
             overflow: hidden;
@@ -122,9 +110,9 @@
 
         /* Полностью прозрачные матовые блоки */
         .card {
-            background: var(--card-bg);
-            backdrop-filter: blur(25px); /* Мощный blur, сквозь который виден задник */
-            -webkit-backdrop-filter: blur(25px);
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
             border-radius: 23px;
             padding: 60px 40px;
             text-align: left;
@@ -159,7 +147,6 @@
             opacity: 1;
         }
 
-        /* Вращающийся неоновый контур */
         .card-wrapper::before {
             content: '';
             position: absolute;
@@ -182,7 +169,7 @@
 
         .card-wrapper:hover {
             transform: translateY(-12px);
-            background: linear-gradient(135deg, rgba(255,255,255,0.25), rgba(255,255,255,0.05));
+            background: linear-gradient(135deg, rgba(255,255,255,0.3), rgba(255,255,255,0.08));
         }
 
         .card-wrapper:hover::before {
@@ -192,7 +179,7 @@
 
         .card-title {
             font-size: 13px;
-            color: var(--text-muted);
+            color: #64748b;
             text-transform: uppercase;
             letter-spacing: 2px;
             font-weight: 900;
@@ -207,7 +194,7 @@
             z-index: 1;
         }
 
-        /* Прозрачная анимированная кнопка */
+        /* Прозрачная черная кнопка с бликом */
         .btn-buy {
             display: block;
             width: 100%;
@@ -232,7 +219,6 @@
             overflow: hidden;
         }
 
-        /* Эффект блика на кнопке */
         .btn-buy::after {
             content: '';
             position: absolute;
@@ -240,7 +226,7 @@
             left: -150%;
             width: 50%;
             height: 100%;
-            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.25) 50%, rgba(255,255,255,0) 100%);
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 100%);
             transform: skewX(-25deg);
             transition: 0.75s;
         }
@@ -266,9 +252,6 @@
                 opacity: 1;
                 background: linear-gradient(135deg, rgba(255,255,255,0.3), transparent);
             }
-            .container {
-                margin-top: 50px;
-            }
         }
     </style>
 </head>
@@ -286,7 +269,6 @@
         <h1 class="headline">@ianchikexe - Система не рассуждает.<br>Система ебашит</h1>
 
         <div class="services-grid">
-            <!-- Карточка 1 -->
             <div class="card-wrapper">
                 <div class="card">
                     <div class="card-title">Custom Bluestacks</div>
@@ -295,7 +277,6 @@
                 </div>
             </div>
 
-            <!-- Карточка 2 -->
             <div class="card-wrapper">
                 <div class="card">
                     <div class="card-title">Windows Optimization</div>
@@ -303,7 +284,6 @@
                 </div>
             </div>
 
-            <!-- Карточка 3 -->
             <div class="card-wrapper">
                 <div class="card">
                     <div class="card-title">Optimization CS2</div>
@@ -313,3 +293,12 @@
         </div>
 
         <a href="https://t.me" target="_blank" rel="noopener noreferrer" class="btn-buy">Купить</a>
+    </div>
+
+    <script>
+        // Скрипт принудительно устанавливает оригинальную ссылку на фон
+        document.body.style.backgroundImage = "linear-gradient(180deg, rgba(5, 5, 8, 0.4) 0%, rgba(5, 5, 8, 0.5) 100%), url('https://pinimg.com')";
+    </script>
+
+</body>
+</html>
