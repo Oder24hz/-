@@ -6,11 +6,19 @@
     <title>ianchikexe — Оптимизация</title>
     
     <!-- Подключение ультра-жирного шрифта -->
-    <link rel="preconnect" href="https://googleapis.com">
-    <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Unbounded:wght@800;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://googleapis.com" rel="stylesheet">
     
     <style>
+        /* Базовые настройки и переменные из твоего старого сайта */
+        :root {
+            --bg-gif: url('https://i.pinimg.com/originals/31/f0/cb/31f0cbbfe52091e54b2f8157ebd60a8f.gif');
+            --card-bg: rgba(10, 10, 15, 0.7);
+            --text-main: #FFFFFF;
+            --text-muted: #64748b;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -18,9 +26,12 @@
             user-select: none;
         }
 
+        /* Задний фон один в один по твоей технологии */
         body {
-            background-color: #050508;
-            color: #ffffff;
+            background: linear-gradient(180deg, rgba(5, 5, 8, 0.75) 0%, rgba(5, 5, 8, 0.85) 100%), 
+                        var(--bg-gif) no-repeat center center fixed;
+            background-size: cover;
+            color: var(--text-main);
             font-family: 'Unbounded', sans-serif;
             min-height: 100vh;
             display: flex;
@@ -28,31 +39,9 @@
             align-items: center;
             overflow-y: auto;
             overflow-x: hidden;
-            position: relative;
         }
 
-        /* Фоновый тег со скрытием реферера */
-        .bg-gif {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -2;
-        }
-
-        /* Затемнение поверх картинки */
-        .bg-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(180deg, rgba(5, 5, 8, 0.75) 0%, rgba(5, 5, 8, 0.85) 100%);
-            z-index: -1;
-        }
-
+        /* Кнопки навигации строго по центру */
         header {
             width: 100%;
             max-width: 1400px;
@@ -69,7 +58,7 @@
         }
 
         .nav-links a {
-            color: #64748b;
+            color: var(--text-muted);
             text-decoration: none;
             font-size: 16px;
             font-weight: 900;
@@ -79,10 +68,11 @@
         }
 
         .nav-links a:hover {
-            color: #ffffff;
+            color: var(--text-main);
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
 
+        /* Крупный объемный контейнер */
         .container {
             max-width: 1300px;
             width: 100%;
@@ -95,6 +85,7 @@
             z-index: 2;
         }
 
+        /* Огромная жирная цитата */
         .headline {
             font-size: 42px;
             font-weight: 900;
@@ -105,6 +96,7 @@
             text-shadow: 0 0 40px rgba(255, 255, 255, 0.15);
         }
 
+        /* Мощная трехколоночная сетка */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -113,6 +105,7 @@
             margin-bottom: 60px;
         }
 
+        /* Эффект стекла */
         .card-wrapper {
             position: relative;
             background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.01));
@@ -123,7 +116,7 @@
         }
 
         .card {
-            background: rgba(10, 10, 15, 0.7);
+            background: var(--card-bg);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-radius: 23px;
@@ -136,6 +129,7 @@
             position: relative;
         }
 
+        /* Подсказка при наведении на Custom Bluestacks */
         .card-hint {
             position: absolute;
             inset: 0;
@@ -160,6 +154,7 @@
             opacity: 1;
         }
 
+        /* Анимация вращения неоновых краев при наведении */
         .card-wrapper::before {
             content: '';
             position: absolute;
@@ -191,7 +186,7 @@
 
         .card-title {
             font-size: 13px;
-            color: #64748b;
+            color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 2px;
             font-weight: 900;
@@ -206,6 +201,7 @@
             z-index: 1;
         }
 
+        /* Прозрачная черная кнопка Купить */
         .btn-buy {
             display: block;
             width: 100%;
@@ -236,6 +232,7 @@
             box-shadow: 0 0 50px rgba(255, 255, 255, 0.5);
         }
 
+        /* Адаптивность под мобилки */
         @media (max-width: 950px) {
             .services-grid {
                 grid-template-columns: 1fr;
@@ -250,10 +247,7 @@
 </head>
 <body>
 
-    <!-- Прямая ссылка с полным отключением реферера для обхода защиты Pinterest -->
-    <img class="bg-gif" src="https://pinimg.com" referrerpolicy="no-referrer" alt="background">
-    <div class="bg-overlay"></div>
-
+    <!-- Шапка со ссылками -->
     <header>
         <div class="nav-links">
             <a href="https://t.me" target="_blank" rel="noopener noreferrer">Reviews</a>
@@ -262,10 +256,12 @@
         </div>
     </header>
 
+    <!-- Основной контент -->
     <div class="container">
         <h1 class="headline">@ianchikexe - Система не рассуждает.<br>Система ебашит</h1>
 
         <div class="services-grid">
+            <!-- Карточка 1 -->
             <div class="card-wrapper">
                 <div class="card">
                     <div class="card-title">Custom Bluestacks</div>
@@ -274,6 +270,7 @@
                 </div>
             </div>
 
+            <!-- Карточка 2 -->
             <div class="card-wrapper">
                 <div class="card">
                     <div class="card-title">Windows Optimization</div>
@@ -281,6 +278,7 @@
                 </div>
             </div>
 
+            <!-- Карточка 3 -->
             <div class="card-wrapper">
                 <div class="card">
                     <div class="card-title">Optimization CS2</div>
@@ -289,6 +287,7 @@
             </div>
         </div>
 
+        <!-- Кнопка купить -->
         <a href="https://t.me" target="_blank" rel="noopener noreferrer" class="btn-buy">Купить</a>
     </div>
 
