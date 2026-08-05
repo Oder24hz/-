@@ -28,18 +28,16 @@
             background-color: var(--bg-color);
             color: var(--text-main);
             font-family: 'Space Grotesk', sans-serif;
-            min-height: 100vh;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: space-between; /* Растягивает контент равномерно по высоте экрана */
-            overflow-y: auto;
-            overflow-x: hidden;
+            justify-content: space-between;
+            overflow: hidden; /* Запрещает элементам ломать экран */
             position: relative;
-            padding-bottom: 60px; /* Отступ снизу для кнопки */
+            padding-bottom: 30px;
         }
 
-        /* Задний фон через встроенный Base64 код гифки (Pinterest больше не заблокирует её) */
         .bg-gif {
             position: fixed;
             top: 0;
@@ -48,7 +46,6 @@
             height: 100%;
             object-fit: cover;
             z-index: -2;
-            background-image: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"); /* Временный фоллбек, заменяемый скриптом ниже */
         }
 
         .bg-overlay {
@@ -67,7 +64,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 40px 20px;
+            padding: 25px 20px 10px;
             z-index: 10;
         }
 
@@ -79,7 +76,7 @@
         .nav-links a {
             color: var(--text-muted);
             text-decoration: none;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -92,7 +89,7 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1100px;
             width: 100%;
             padding: 0 40px;
             text-align: center;
@@ -100,33 +97,33 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            flex-grow: 1; /* Позволяет контейнеру занять всё центральное пространство */
+            flex-grow: 1;
             z-index: 2;
         }
 
         .headline {
             font-family: 'Unbounded', sans-serif;
-            font-size: 38px;
+            font-size: clamp(18px, 2.2vw, 32px); /* Компактный размер, чтобы не выбивать элементы */
             font-weight: 900;
             line-height: 1.4;
             letter-spacing: -1px;
-            margin-bottom: 50px;
-            max-width: 1000px;
+            margin-bottom: 35px;
+            max-width: 900px;
             text-shadow: 0 0 40px rgba(255, 255, 255, 0.15);
         }
 
         .services-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 35px;
+            gap: 25px;
             width: 100%;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
 
         .card-wrapper {
             position: relative;
             background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.01));
-            border-radius: 20px;
+            border-radius: 16px;
             padding: 1px;
             overflow: hidden;
             transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -136,8 +133,8 @@
             background: var(--card-bg);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-radius: 19px;
-            padding: 50px 35px;
+            border-radius: 15px;
+            padding: 35px 25px;
             text-align: left;
             height: 100%;
             display: flex;
@@ -151,13 +148,13 @@
             inset: 0;
             background: rgba(10, 10, 15, 0.95);
             backdrop-filter: blur(15px);
-            border-radius: 19px;
+            border-radius: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 25px;
+            padding: 20px;
             text-align: center;
-            font-size: 17px;
+            font-size: 15px;
             font-weight: 700;
             color: #ffffff;
             opacity: 0;
@@ -191,7 +188,7 @@
         }
 
         .card-wrapper:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
         }
 
         .card-wrapper:hover::before {
@@ -200,18 +197,18 @@
         }
 
         .card-title {
-            font-size: 13px;
+            font-size: 12px;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 2px;
             font-weight: 700;
-            margin-bottom: 25px;
+            margin-bottom: 15px;
             z-index: 1;
         }
 
         .card-price {
             font-family: 'Unbounded', sans-serif;
-            font-size: 44px;
+            font-size: 34px;
             font-weight: 900;
             letter-spacing: -1px;
             z-index: 1;
@@ -220,10 +217,10 @@
         .btn-buy {
             display: block;
             width: 100%;
-            max-width: 380px;
-            padding: 20px 0;
+            max-width: 340px;
+            padding: 16px 0;
             font-family: 'Unbounded', sans-serif;
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -232,7 +229,7 @@
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border: 2px solid rgba(255, 255, 255, 0.2);
-            border-radius: 14px;
+            border-radius: 12px;
             text-decoration: none;
             cursor: pointer;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
@@ -249,37 +246,20 @@
         }
 
         @media (max-width: 900px) {
-            .services-grid {
-                grid-template-columns: 1fr;
-                max-width: 450px;
-            }
-            .card-wrapper::before {
-                opacity: 1;
-                background: linear-gradient(135deg, rgba(255,255,255,0.3), transparent);
-            }
+            body { overflow-y: auto; height: auto; }
+            .services-grid { grid-template-columns: 1fr; max-width: 450px; }
+            .card-wrapper::before { opacity: 1; background: linear-gradient(135deg, rgba(255,255,255,0.3), transparent); }
         }
     </style>
 </head>
 <body>
 
-    <!-- Изображение, код которого подгружается скриптом ниже во избежание CORS блокировок -->
-    <img class="bg-gif" id="base64Bg" alt="background">
+    <img class="bg-gif" id="safeBg" alt="background">
     <div class="bg-overlay"></div>
 
     <script>
-        // Оригинальный бинарный код твоей гифки с затылком, переведенный в текст. Теперь она вшита намертво прямо в страницу.
-        fetch('https://allorigins.win' + encodeURIComponent('https://pinimg.com'))
-        .then(response => {
-            if (response.ok) return response.json();
-            throw new Error('Network response was not ok.');
-        })
-        .then(data => {
-            document.getElementById('base64Bg').src = 'https://weserv.nl';
-        })
-        .catch(() => {
-            // Если прокси падает, запрашиваем напрямую через CORS-bypass
-            document.getElementById('base64Bg').src = 'https://weserv.nl';
-        });
+        // Обход провайдеров и блокировок Vercel с использованием альтернативного зеркала картинок
+        document.getElementById('safeBg').src = 'https://wsrv.nl';
     </script>
 
     <header>
@@ -306,3 +286,19 @@
                 <div class="card">
                     <div class="card-title">Windows Optimization</div>
                     <div class="card-price">400₽</div>
+                </div>
+            </div>
+
+            <div class="card-wrapper">
+                <div class="card">
+                    <div class="card-title">Optimization CS2</div>
+                    <div class="card-price">500₽</div>
+                </div>
+            </div>
+        </div>
+
+        <a href="https://t.me" target="_blank" rel="noopener noreferrer" class="btn-buy">Купить</a>
+    </div>
+
+</body>
+</html>
