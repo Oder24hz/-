@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ianchikexe — Оптимизация</title>
     
-    <!-- Подключение премиального технологичного шрифта -->
+    <!-- Подключение технологичных шрифтов -->
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
     <link href="https://googleapis.com/css2?family=Space+Grotesk:wght@700;900&family=Unbounded:wght@700;900&display=swap" rel="stylesheet">
@@ -21,14 +21,14 @@
 
         :root {
             --bg-color: #050508;
-            --neon-glow: #ffffff;
             --card-bg: rgba(10, 10, 15, 0.7);
             --text-main: #ffffff;
             --text-muted: #64748b;
         }
 
         body {
-            background: linear-gradient(180deg, rgba(5, 5, 8, 0.85) 0%, rgba(5, 5, 8, 0.95) 100%), url('./background.gif') no-repeat center center fixed;
+            /* Задний фон с твоей GIF и затемнением для читаемости */
+            background: linear-gradient(180deg, rgba(5, 5, 8, 0.8) 0%, rgba(5, 5, 8, 0.9) 100%), url('https://i.pinimg.com/originals/69/7c/b0/697cb01edaa30cd11c5c06cc5b924411.gif') no-repeat center center fixed;
             background-size: cover;
             color: var(--text-main);
             font-family: 'Space Grotesk', sans-serif;
@@ -39,21 +39,7 @@
             overflow-x: hidden;
         }
 
-        /* Декоративное неоновое облако на заднем фоне */
-        body::before {
-            content: '';
-            position: absolute;
-            top: 25%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: clamp(300px, 50vw, 800px);
-            height: clamp(300px, 50vw, 800px);
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, rgba(0,0,0,0) 70%);
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        /* Навигация — адаптируется под любой экран */
+        /* Навигация */
         header {
             width: 100%;
             max-width: 1400px;
@@ -84,7 +70,7 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 2px;
-            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: color 0.3s ease;
         }
 
         .nav-links a:hover {
@@ -105,7 +91,7 @@
             align-items: center;
         }
 
-        /* Главный жирный заголовок */
+        /* Главный заголовок */
         .headline {
             font-family: 'Unbounded', sans-serif;
             font-size: clamp(24px, 4vw, 52px);
@@ -117,21 +103,21 @@
             text-shadow: 0 0 40px rgba(255, 255, 255, 0.15);
         }
 
-        /* Адаптивная сетка карточек */
+        /* Сетка карточек — строго 3 штуки в один ряд на ПК */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(clamp(250px, 22vw, 340px), 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: clamp(20px, 3vw, 35px);
             width: 100%;
             margin-bottom: clamp(40px, 6vw, 80px);
         }
 
-        /* Карточка с эффектом стекла и скрытым светящимся контуром */
+        /* Обёртка с эффектом стекла */
         .card-wrapper {
             position: relative;
             background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.01));
             border-radius: 20px;
-            padding: 1px; /* Толщина рамки */
+            padding: 1px;
             overflow: hidden;
             transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
@@ -149,7 +135,7 @@
             justify-content: space-between;
         }
 
-        /* Анимация свечения краев при наведении */
+        /* Анимация вращающегося свечения краев */
         .card-wrapper::before {
             content: '';
             position: absolute;
@@ -180,7 +166,7 @@
         }
 
         .card-title {
-            font-size: clamp(12px, 1.1vw, 14px);
+            font-size: clamp(11px, 1.1vw, 13px);
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -191,13 +177,13 @@
 
         .card-price {
             font-family: 'Unbounded', sans-serif;
-            font-size: clamp(32px, 3.5vw, 44px);
+            font-size: clamp(28px, 3.2vw, 44px);
             font-weight: 900;
             letter-spacing: -1px;
             z-index: 1;
         }
 
-        /* Мощная кнопка Купить */
+        /* Кнопка Купить */
         .btn-buy {
             display: block;
             width: 100%;
@@ -226,8 +212,12 @@
             outline: 2px solid rgba(255, 255, 255, 0.8);
         }
 
-        /* Специфические фиксы для мобилок (чтобы ничего не съезжало) */
-        @media (max-width: 680px) {
+        /* Перестроение сетки в один столбец на мобильных и планшетах */
+        @media (max-width: 900px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+                max-width: 450px;
+            }
             header {
                 flex-direction: column;
                 gap: 20px;
@@ -237,7 +227,7 @@
                 padding-top: 20px;
             }
             .card-wrapper::before {
-                opacity: 1; /* На телефонах свечение статично по краям */
+                opacity: 1;
                 background: linear-gradient(135deg, rgba(255,255,255,0.3), transparent);
             }
         }
@@ -245,7 +235,6 @@
 </head>
 <body>
 
-    <!-- Шапка сайта -->
     <header>
         <div class="logo">ianchikexe</div>
         <div class="nav-links">
@@ -255,7 +244,6 @@
         </div>
     </header>
 
-    <!-- Главная секция -->
     <div class="container">
         <h1 class="headline">ianchikexe. Твоя система не думает — она действует</h1>
 
@@ -285,7 +273,6 @@
             </div>
         </div>
 
-        <!-- Кнопка действия -->
         <a href="https://t.me" target="_blank" rel="noopener noreferrer" class="btn-buy">Купить</a>
     </div>
 
