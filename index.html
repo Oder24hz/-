@@ -5,13 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ianchikexe — Оптимизация</title>
     
-    <!-- Подключение технологичных шрифтов -->
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
     <link href="https://googleapis.com/css2?family=Space+Grotesk:wght@700;900&family=Unbounded:wght@700;900&display=swap" rel="stylesheet">
     
     <style>
-        /* Базовые настройки и сброс */
         * {
             margin: 0;
             padding: 0;
@@ -39,7 +37,7 @@
             position: relative;
         }
 
-        /* Задний фон через HTML-тег с жестким наложением темного фильтра */
+        /* Путь изменен на локальный файл в твоем репозитории */
         .bg-gif {
             position: fixed;
             top: 0;
@@ -56,18 +54,17 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(180deg, rgba(5, 5, 8, 0.8) 0%, rgba(5, 5, 8, 0.9) 100%);
+            background: linear-gradient(180deg, rgba(5, 5, 8, 0.85) 0%, rgba(5, 5, 8, 0.95) 100%);
             z-index: -1;
         }
 
-        /* Навигация — строго по центру сверху */
         header {
             width: 100%;
             max-width: 1400px;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: clamp(20px, 3vw, 35px) 20px;
+            padding: 20px;
             z-index: 10;
         }
 
@@ -83,7 +80,7 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 2px;
-            transition: color 0.3s ease, text-shadow 0.3s ease;
+            transition: color 0.3s ease;
         }
 
         .nav-links a:hover {
@@ -91,11 +88,10 @@
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
 
-        /* Главный контейнер */
         .container {
             max-width: 1200px;
             width: 100%;
-            padding: 0 clamp(20px, 4vw, 60px) 40px;
+            padding: 0 clamp(20px, 4vw, 60px) 30px;
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -103,29 +99,26 @@
             z-index: 2;
         }
 
-        /* Главный заголовок с цитатой */
         .headline {
             font-family: 'Unbounded', sans-serif;
-            font-size: clamp(20px, 3vw, 40px);
+            font-size: clamp(18px, 2.5vw, 36px);
             font-weight: 900;
             line-height: 1.3;
             letter-spacing: -1px;
-            margin-top: 20px;
-            margin-bottom: clamp(30px, 5vw, 60px);
+            margin-top: 10px;
+            margin-bottom: clamp(25px, 4vw, 50px);
             max-width: 1000px;
             text-shadow: 0 0 40px rgba(255, 255, 255, 0.15);
         }
 
-        /* Сетка карточек — строго 3 штуки в один ряд на ПК */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: clamp(20px, 3vw, 35px);
+            gap: clamp(15px, 2.5vw, 30px);
             width: 100%;
-            margin-bottom: clamp(40px, 5vw, 60px);
+            margin-bottom: clamp(30px, 4vw, 50px);
         }
 
-        /* Обёртка с эффектом стекла */
         .card-wrapper {
             position: relative;
             background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.01));
@@ -140,7 +133,7 @@
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-radius: 19px;
-            padding: clamp(30px, 3.5vw, 45px) clamp(20px, 2.5vw, 30px);
+            padding: clamp(25px, 3vw, 40px) clamp(20px, 2vw, 25px);
             text-align: left;
             height: 100%;
             display: flex;
@@ -149,7 +142,6 @@
             position: relative;
         }
 
-        /* Появляющийся кастомный текст при наведении на первую карточку */
         .card-hint {
             position: absolute;
             inset: 0;
@@ -166,7 +158,7 @@
             color: #ffffff;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transition: opacity 0.3s ease;
             z-index: 5;
         }
 
@@ -174,7 +166,6 @@
             opacity: 1;
         }
 
-        /* Анимация вращающегося свечения краев */
         .card-wrapper::before {
             content: '';
             position: absolute;
@@ -196,7 +187,7 @@
         }
 
         .card-wrapper:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
         }
 
         .card-wrapper:hover::before {
@@ -205,31 +196,30 @@
         }
 
         .card-title {
-            font-size: clamp(11px, 1vw, 13px);
+            font-size: clamp(10px, 0.9vw, 12px);
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 2px;
             font-weight: 700;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             z-index: 1;
         }
 
         .card-price {
             font-family: 'Unbounded', sans-serif;
-            font-size: clamp(26px, 2.8vw, 40px);
+            font-size: clamp(24px, 2.5vw, 36px);
             font-weight: 900;
             letter-spacing: -1px;
             z-index: 1;
         }
 
-        /* Черная прозрачная кнопка Купить */
         .btn-buy {
             display: block;
             width: 100%;
-            max-width: clamp(240px, 30vw, 380px);
-            padding: clamp(16px, 1.8vw, 20px) 0;
+            max-width: clamp(240px, 25vw, 360px);
+            padding: 16px 0;
             font-family: 'Unbounded', sans-serif;
-            font-size: clamp(15px, 1.3vw, 18px);
+            font-size: clamp(14px, 1.2vw, 16px);
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -243,7 +233,6 @@
             cursor: pointer;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-            margin-bottom: 20px;
         }
 
         .btn-buy:hover {
@@ -254,7 +243,6 @@
             box-shadow: 0 0 40px rgba(255, 255, 255, 0.5);
         }
 
-        /* Перестроение сетки в один столбец на мобильных и планшетах */
         @media (max-width: 900px) {
             .services-grid {
                 grid-template-columns: 1fr;
@@ -269,11 +257,10 @@
 </head>
 <body>
 
-    <!-- Жестко зафиксированная гифка на фоне -->
-    <img class="bg-gif" src="https://pinimg.com" alt="background">
+    <!-- Путь заменен на локальный файл -->
+    <img class="bg-gif" src="./background.gif" alt="background">
     <div class="bg-overlay"></div>
 
-    <!-- Шапка сайта -->
     <header>
         <div class="nav-links">
             <a href="https://t.me" target="_blank" rel="noopener noreferrer">Reviews</a>
@@ -282,13 +269,10 @@
         </div>
     </header>
 
-    <!-- Главная секция -->
     <div class="container">
-        <!-- Цитата -->
         <h1 class="headline">@ianchikexe - Система не рассуждает. Система ебашит</h1>
 
         <div class="services-grid">
-            <!-- Товар 1 -->
             <div class="card-wrapper">
                 <div class="card">
                     <div class="card-title">Custom Bluestacks</div>
@@ -297,7 +281,6 @@
                 </div>
             </div>
 
-            <!-- Товар 2 -->
             <div class="card-wrapper">
                 <div class="card">
                     <div class="card-title">Windows Optimization</div>
@@ -305,9 +288,16 @@
                 </div>
             </div>
 
-            <!-- Товар 3 -->
             <div class="card-wrapper">
                 <div class="card">
                     <div class="card-title">Optimization CS2</div>
                     <div class="card-price">500₽</div>
-                        </div>
+                </div>
+            </div>
+        </div>
+
+        <a href="https://t.me" target="_blank" rel="noopener noreferrer" class="btn-buy">Купить</a>
+    </div>
+
+</body>
+</html>
