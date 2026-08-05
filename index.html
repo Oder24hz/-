@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ianchikexe — Оптимизация</title>
     
+    <!-- Подключение ультра-жирного шрифта -->
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
     <link href="https://googleapis.com/css2?family=Unbounded:wght@800;900&display=swap" rel="stylesheet">
@@ -17,11 +18,8 @@
             user-select: none;
         }
 
-        /* Гифка встроена текстом напрямую, чтобы исключить блокировки */
         body {
-            background: linear-gradient(180deg, rgba(5, 5, 8, 0.4) 0%, rgba(5, 5, 8, 0.5) 100%), 
-                        url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7') no-repeat center center fixed;
-            background-size: cover;
+            background-color: #050508;
             color: #FFFFFF;
             font-family: 'Unbounded', sans-serif;
             min-height: 100vh;
@@ -30,6 +28,33 @@
             align-items: center;
             overflow-y: auto;
             overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Фоновый слой, который пробьет блокировку хостинга */
+        .bg-gif-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+        }
+
+        .bg-gif-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .bg-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(5, 5, 8, 0.5) 0%, rgba(5, 5, 8, 0.7) 100%);
+            z-index: -1;
         }
 
         header {
@@ -72,7 +97,7 @@
             align-items: center;
             flex-grow: 1;
             z-index: 2;
-            margin-top: 120px; /* Смещение блоков ниже */
+            margin-top: 120px; /* Контент сдвинут ниже */
         }
 
         .headline {
@@ -101,18 +126,18 @@
 
         .card-wrapper {
             position: relative;
-            background: linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.02));
+            background: linear-gradient(135deg, rgba(255,255,255,0.18), rgba(255,255,255,0.03));
             border-radius: 24px;
             padding: 1px;
             overflow: hidden;
             transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
-        /* Полностью прозрачные матовые блоки */
+        /* Полностью прозрачные матовые карточки без серой заливки */
         .card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
             border-radius: 23px;
             padding: 60px 40px;
             text-align: left;
@@ -169,7 +194,7 @@
 
         .card-wrapper:hover {
             transform: translateY(-12px);
-            background: linear-gradient(135deg, rgba(255,255,255,0.3), rgba(255,255,255,0.08));
+            background: linear-gradient(135deg, rgba(255,255,255,0.35), rgba(255,255,255,0.08));
         }
 
         .card-wrapper:hover::before {
@@ -257,6 +282,12 @@
 </head>
 <body>
 
+    <!-- Тег с обходом CORS блокировок через анонимный запрос -->
+    <div class="bg-gif-container">
+        <img src="https://pinimg.com" crossorigin="anonymous" referrerpolicy="no-referrer" alt="background">
+    </div>
+    <div class="bg-overlay"></div>
+
     <header>
         <div class="nav-links">
             <a href="https://t.me" target="_blank" rel="noopener noreferrer">Reviews</a>
@@ -294,11 +325,6 @@
 
         <a href="https://t.me" target="_blank" rel="noopener noreferrer" class="btn-buy">Купить</a>
     </div>
-
-    <script>
-        // Скрипт принудительно устанавливает оригинальную ссылку на фон
-        document.body.style.backgroundImage = "linear-gradient(180deg, rgba(5, 5, 8, 0.4) 0%, rgba(5, 5, 8, 0.5) 100%), url('https://pinimg.com')";
-    </script>
 
 </body>
 </html>
